@@ -7,22 +7,41 @@ import multiprocessing
 import nibabel as nib
 from skimage import morphology, measure, segmentation
 
-
+def normalize_intensity(image):
+    """
+    Normalize the intensity of an input image.
+    """
+    min_val = np.percentile(image, 1)
+    max_val = np.percentile(image, 99)
+    image = np.clip(image, min_val, max_val)
+    image = (image - min_val) / (max_val - min_val)
+    return (image * 255).astype(np.uint8)
 def preprocess_image(image_path, target_size=(224, 224)):
     try:
+        # Check file extension
+        if not image_path.lower().endswith(('.png', '.jpg', '.jpeg')):
+            return None, f"Unsupported file type: {image_path}"
+
+        # Read the image in grayscale
         image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         if image is None:
             return None, f"Failed to read image: {image_path}"
-        # resize to the target size
+
+        # Apply custom intensity normalization
+        image = normalize_intensity(image)
+
+        # Resize to the target size
         image = cv2.resize(image, target_size)
-        # apply Gaussian blur for noise reduction
+
+        # Apply Gaussian blur for noise reduction
         image = cv2.GaussianBlur(image, (5, 5), 0)
-        # Normalizes the intensity of img
-        image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX)
-        #Constrast limited adaptive histogram equalization
+
+        # Apply CLAHE
         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
         image = clahe.apply(image)
-        image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB) #convert back to RGB format
+
+        # Convert back to RGB format
+        image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
 
         return image, None
     except Exception as e:
@@ -56,33 +75,6 @@ def preprocess_image(image_path, target_size=(224, 224)):
 #     stripped_image = image * brain_mask
 #
 #     return stripped_image
-
-
-# def preprocess_image(image_path, target_size=(224, 224)):
-#     try:
-#         # Load the NIfTI image
-#         nii_img = nib.load(image_path)
-#         image = nii_img.get_fdata()
-#
-#         # Assuming it's a 3D image, take a middle slice
-#         middle_slice = image[:, :, image.shape[2] // 2]
-#
-#         # Perform skull stripping
-#         stripped_image = skull_strip(middle_slice)
-#
-#         # Resize the image
-#         stripped_image = cv2.resize(stripped_image, target_size)
-#
-#         # Apply additional preprocessing steps (as before)
-#         image = cv2.GaussianBlur(stripped_image, (5, 5), 0)
-#         image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX)
-#         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-#         image = clahe.apply(image.astype(np.uint8))
-#         image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
-#
-#         return image, None
-#     except Exception as e:
-#         return None, f"Error processing {image_path}: {str(e)}"
 
 
 def process_and_validate_image(args):
@@ -143,6 +135,7 @@ def process_and_validate_dataset(input_base_path, output_base_path, target_size=
             print(file)
 
     return valid_count, invalid_count, invalid_files
+
 #This structure allows for efficient processing of a large number of images:
 
 if __name__ == '__main__':
