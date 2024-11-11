@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c51892c-de16-4ef9-9950-6fd0e7a4cc03" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/finetune.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/BrainScan-TL-MRI-Tumor-Classifier.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BrainScan-TL-MRI-Tumor-Classifier.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/architecture adaption.py" beforeDir="false" afterPath="$PROJECT_DIR$/architecture adaption.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +49,12 @@
     &quot;assignee&quot;: &quot;Dyceejl&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Schrrodinger/BrainScan-TL-MRI-Tumor-Classifier.git&quot;,
-    &quot;accountId&quot;: &quot;232c5bd4-f154-436b-8ee3-99d65c458080&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Schrrodinger/BrainScan-TL-MRI-Tumor-Classifier.git",
+    "accountId": "b492c66e-5de3-47ba-ab24-7039e6f73bb7"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -68,7 +68,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.architecture adaption.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dycee__jl&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -131,21 +131,15 @@
       <workItem from="1729171629860" duration="71000" />
       <workItem from="1729174907695" duration="245000" />
       <workItem from="1729175182395" duration="50000" />
+      <workItem from="1731309625809" duration="8055000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/architecture adaption.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BrainScan_TL_MRI_Tumor_Classifier$architecture_adaption.coverage" NAME="architecture adaption Coverage Results" MODIFIED="1729167016711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
